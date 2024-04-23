@@ -1,2 +1,60 @@
 # backEndNoteTaker
-I need to create an application called backEndNoteTaker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file.
+  ![Github License](https://img.shields.io/badge/license-MIT-yellowgreen.svg)
+
+
+  ## Description 📝
+  
+  TBD
+
+  ## Table of Contents 🗒
+
+  * [Installations](#installations-💻)
+
+  * [Usage](#usage-🏆)
+  
+  * [Contributors](#contributors-😃)
+
+  * [Test](#tests-🧪)
+
+  * [Questions](#questions)
+
+  * [License](#license-📛)
+  
+  ## Installations  💻
+  
+  To install dependencies, run these commands:
+
+  ```
+  npm install
+  ```
+  ## Usage 🏆
+
+  1. TBD
+  2. TBD
+  3. TBD
+  4. TBD
+
+  ## License 📛 
+
+    Copyright @ MIT. All rights reserved.
+
+    Licensed under the MIT license.
+
+  ## Contributors 😃
+
+  Erikrainer
+
+  ## Tests 🧪
+
+  To run tests, run these commands:
+
+  ```
+  npm test
+  ```
+
+  ## Questions
+
+  For additional questions, contact me at the email provided below. 
+
+  - GitHub: [Erikrainer](https://github.com/Erikrainer/)
+  - Email:  rainer.erik70@gmail.com
