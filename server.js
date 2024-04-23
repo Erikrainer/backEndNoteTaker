@@ -9,6 +9,7 @@ const PORT = 3001;
 const app = express();
 
 app.use(express.json());
+
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
@@ -21,9 +22,12 @@ app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, "/public/notes.html"))
 );
 
+// POST request to add a note
 app.post('/api/notes', (req, res) => {
-  console.info(`${req.method} request received to add a Note`);
+  // Log that a POST request was received
+  console.info(`${req.method} request received to add a note`);
 
+  // Destructuring assignment for the items in req.body
   const { title, text } = req.body;
 
   // If all the required properties are present
@@ -35,17 +39,28 @@ app.post('/api/notes', (req, res) => {
       note_id: id(),
     };
 
-    // Convert the data to a string so we can save it
-    const noteString = JSON.stringify(newNotes);
+    // Obtain existing notes
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+      if (err) {
+        console.error(err);
+      } else {
+        // Convert string into JSON object
+        const parsedNotes = JSON.parse(data);
 
-    // Write the string to a file
-    fs.appendFile(`./db/db.json`, noteString, (err) =>
-      err
-        ? console.error(err)
-        : console.log(
-            `A note for ${newNotes.title} has been written to JSON file`
-          )
-    );
+        // Add a new note
+        parsedNotes.push(newNotes);
+
+        // Write updated notes back to the file
+        fs.writeFile(
+          './db/db.json',
+          JSON.stringify(parsedNotes, null, 4),
+          (writeErr) =>
+            writeErr
+              ? console.error(writeErr)
+              : console.info('Successfully updated notes!')
+        );
+      }
+    });
 
     const response = {
       status: 'success',
@@ -55,7 +70,7 @@ app.post('/api/notes', (req, res) => {
     console.log(response);
     res.status(201).json(response);
   } else {
-    res.status(500).json('Error in adding notes');
+    res.status(500).json('Error in posting review');
   }
 });
 
