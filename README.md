@@ -22,7 +22,7 @@
   
   ## Installations  💻
 
-  Deployed link: 
+  Deployed link:   https://backendnotetaker.onrender.com
   
   To install dependencies, run these commands:
 
